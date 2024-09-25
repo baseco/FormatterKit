@@ -15,43 +15,9 @@ let package = Package(
             name: "FormatterKit",
             targets: ["FormatterKit"]
         ),
-        
-        // Individual formatter libraries corresponding to subspecs
-        .library(
-            name: "FormatterKitAddressFormatter",
-            targets: ["AddressFormatter"]
-        ),
-        .library(
-            name: "FormatterKitArrayFormatter",
-            targets: ["ArrayFormatter"]
-        ),
-        .library(
-            name: "FormatterKitColorFormatter",
-            targets: ["ColorFormatter"]
-        ),
-        .library(
-            name: "FormatterKitLocationFormatter",
-            targets: ["LocationFormatter"]
-        ),
-        .library(
-            name: "FormatterKitNameFormatter",
-            targets: ["NameFormatter"]
-        ),
-        .library(
-            name: "FormatterKitOrdinalNumberFormatter",
-            targets: ["OrdinalNumberFormatter"]
-        ),
-        .library(
-            name: "FormatterKitTimeIntervalFormatter",
-            targets: ["TimeIntervalFormatter"]
-        ),
-        .library(
-            name: "FormatterKitUnitOfInformationFormatter",
-            targets: ["UnitOfInformationFormatter"]
-        ),
-        .library(
-            name: "FormatterKitURLRequestFormatter",
-            targets: ["URLRequestFormatter"]
+         .library(
+            name: "FormatterKitResources",
+            targets: ["FormatterKitResources"]
         )
     ],
     dependencies: [
@@ -67,7 +33,7 @@ let package = Package(
                 "NSBundle+FormatterKit.m"
             ],
             resources: [
-                .process("FormatterKit.bundle")
+                .process("../FormatterKit.bundle")
             ],
             publicHeadersPath: ".",
             cSettings: [
@@ -78,158 +44,30 @@ let package = Package(
         // MARK: - Main FormatterKit Target
         .target(
             name: "FormatterKit",
-            dependencies: ["FormatterKitResources"],
+            dependencies: [],
             path: "FormatterKit",
-            sources: [
-                // Include any additional common source files if necessary
-                // Currently, all specific functionalities are in subspecs
-            ],
-            publicHeadersPath: ".",
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ]
-        ),
-        
-        // MARK: - Subspec Targets
-        
-        // AddressFormatter Subspec
-        .target(
-            name: "AddressFormatter",
-            dependencies: ["FormatterKitResources"],
-            path: "FormatterKit",
+
+
             sources: [
                 "TTTAddressFormatter.h",
-                "TTTAddressFormatter.m"
-            ],
-            publicHeadersPath: ".",
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ],
-            linkerSettings: [
-                .linkedFramework("AddressBook"),
-                .linkedFramework("AddressBookUI", .when(platforms: [.iOS, .tvOS]))
-            ]
-        ),
-        
-        // ArrayFormatter Subspec
-        .target(
-            name: "ArrayFormatter",
-            dependencies: ["FormatterKitResources"],
-            path: "FormatterKit",
-            sources: [
+                "TTTAddressFormatter.m",
                 "TTTArrayFormatter.h",
-                "TTTArrayFormatter.m"
-            ],
-            publicHeadersPath: ".",
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ]
-        ),
-        
-        // ColorFormatter Subspec
-        .target(
-            name: "ColorFormatter",
-            dependencies: ["FormatterKitResources"],
-            path: "FormatterKit",
-            sources: [
+                "TTTArrayFormatter.m",
                 "TTTColorFormatter.h",
-                "TTTColorFormatter.m"
-            ],
-            publicHeadersPath: ".",
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ]
-        ),
-        
-        // LocationFormatter Subspec
-        .target(
-            name: "LocationFormatter",
-            dependencies: ["FormatterKitResources"],
-            path: "FormatterKit",
-            sources: [
+                "TTTColorFormatter.m",
                 "TTTLocationFormatter.h",
-                "TTTLocationFormatter.m"
-            ],
-            publicHeadersPath: ".",
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ],
-            linkerSettings: [
-                .linkedFramework("CoreLocation")
-            ]
-        ),
-        
-        // NameFormatter Subspec
-        .target(
-            name: "NameFormatter",
-            dependencies: ["FormatterKitResources"],
-            path: "FormatterKit",
-            sources: [
+                "TTTLocationFormatter.m",
                 "TTTNameFormatter.h",
-                "TTTNameFormatter.m"
-            ],
-            publicHeadersPath: ".",
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ],
-            linkerSettings: [
-                .linkedFramework("AddressBook", .when(platforms: [.iOS, .tvOS]))
-            ]
-        ),
-        
-        // OrdinalNumberFormatter Subspec
-        .target(
-            name: "OrdinalNumberFormatter",
-            dependencies: ["FormatterKitResources"],
-            path: "FormatterKit",
-            sources: [
+                "TTTNameFormatter.m",
                 "TTTOrdinalNumberFormatter.h",
-                "TTTOrdinalNumberFormatter.m"
-            ],
-            publicHeadersPath: ".",
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ]
-        ),
-        
-        // TimeIntervalFormatter Subspec
-        .target(
-            name: "TimeIntervalFormatter",
-            dependencies: ["FormatterKitResources"],
-            path: "FormatterKit",
-            sources: [
+                "TTTOrdinalNumberFormatter.m",
                 "TTTTimeIntervalFormatter.h",
-                "TTTTimeIntervalFormatter.m"
-            ],
-            publicHeadersPath: ".",
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ]
-        ),
-        
-        // UnitOfInformationFormatter Subspec
-        .target(
-            name: "UnitOfInformationFormatter",
-            dependencies: ["FormatterKitResources"],
-            path: "FormatterKit",
-            sources: [
-                "TTTUnitOfInformationFormatter.h",
-                "TTTUnitOfInformationFormatter.m"
-            ],
-            publicHeadersPath: ".",
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ]
-        ),
-        
-        // URLRequestFormatter Subspec
-        .target(
-            name: "URLRequestFormatter",
-            dependencies: ["FormatterKitResources"],
-            path: "FormatterKit",
-            sources: [
+                "TTTTimeIntervalFormatter.m",
                 "TTTURLRequestFormatter.h",
-                "TTTURLRequestFormatter.m"
+                "TTTURLRequestFormatter.m",
+                "TTTUnitOfInformationFormatter.h",
+                "TTTUnitOfInformationFormatter.m",
+
             ],
             publicHeadersPath: ".",
             cSettings: [
