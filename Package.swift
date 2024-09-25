@@ -108,8 +108,7 @@ let package = Package(
             linkerSettings: [
                 .linkedFramework("AddressBook"),
                 .linkedFramework("AddressBookUI", .when(platforms: [.iOS, .tvOS]))
-            ],
-            
+            ]
         ),
         
         // ArrayFormatter Subspec
@@ -157,8 +156,7 @@ let package = Package(
             ],
             linkerSettings: [
                 .linkedFramework("CoreLocation")
-            ],
-            
+            ]
         ),
         
         // NameFormatter Subspec
@@ -176,8 +174,7 @@ let package = Package(
             ],
             linkerSettings: [
                 .linkedFramework("AddressBook", .when(platforms: [.iOS, .tvOS]))
-            ],
-            
+            ]
         ),
         
         // OrdinalNumberFormatter Subspec
