@@ -102,13 +102,14 @@ let package = Package(
                 "TTTAddressFormatter.m"
             ],
             publicHeadersPath: ".",
+            cSettings: [
+                .define("CLANG_MODULES_AUTOLINK", to: "YES")
+            ],
             linkerSettings: [
                 .linkedFramework("AddressBook"),
                 .linkedFramework("AddressBookUI", .when(platforms: [.iOS, .tvOS]))
             ],
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ]
+            
         ),
         
         // ArrayFormatter Subspec
@@ -151,12 +152,13 @@ let package = Package(
                 "TTTLocationFormatter.m"
             ],
             publicHeadersPath: ".",
+            cSettings: [
+                .define("CLANG_MODULES_AUTOLINK", to: "YES")
+            ],
             linkerSettings: [
                 .linkedFramework("CoreLocation")
             ],
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ]
+            
         ),
         
         // NameFormatter Subspec
@@ -169,12 +171,13 @@ let package = Package(
                 "TTTNameFormatter.m"
             ],
             publicHeadersPath: ".",
+            cSettings: [
+                .define("CLANG_MODULES_AUTOLINK", to: "YES")
+            ],
             linkerSettings: [
                 .linkedFramework("AddressBook", .when(platforms: [.iOS, .tvOS]))
             ],
-            cSettings: [
-                .define("CLANG_MODULES_AUTOLINK", to: "YES")
-            ]
+            
         ),
         
         // OrdinalNumberFormatter Subspec
