@@ -29,7 +29,6 @@ let package = Package(
             name: "FormatterKitResources",
             path: "FormatterKit",
             sources: [
-                "NSBundle+FormatterKit.h",
                 "NSBundle+FormatterKit.m"
             ],
             resources: [
@@ -37,6 +36,7 @@ let package = Package(
             ],
             publicHeadersPath: ".",
             cSettings: [
+                            .headerSearchPath("include/FormatterKit"),
                 .define("CLANG_MODULES_AUTOLINK", to: "YES")
             ]
         ),
@@ -49,28 +49,20 @@ let package = Package(
 
 
             sources: [
-                "TTTAddressFormatter.h",
                 "TTTAddressFormatter.m",
-                "TTTArrayFormatter.h",
                 "TTTArrayFormatter.m",
-                "TTTColorFormatter.h",
                 "TTTColorFormatter.m",
-                "TTTLocationFormatter.h",
                 "TTTLocationFormatter.m",
-                "TTTNameFormatter.h",
                 "TTTNameFormatter.m",
-                "TTTOrdinalNumberFormatter.h",
                 "TTTOrdinalNumberFormatter.m",
-                "TTTTimeIntervalFormatter.h",
                 "TTTTimeIntervalFormatter.m",
-                "TTTURLRequestFormatter.h",
                 "TTTURLRequestFormatter.m",
-                "TTTUnitOfInformationFormatter.h",
                 "TTTUnitOfInformationFormatter.m",
 
             ],
-            publicHeadersPath: ".",
+            publicHeadersPath: "include",
             cSettings: [
+                .headerSearchPath("include/FormatterKit"),
                 .define("CLANG_MODULES_AUTOLINK", to: "YES")
             ]
         )
